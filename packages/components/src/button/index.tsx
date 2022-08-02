@@ -4,7 +4,7 @@ interface ButtonProps{
     disabled?:boolean
 }
 const Button:FC<ButtonProps> = (props) => {
-    console.log("button1")
+    console.log("button12")
     return(
         <div className={'btn'}> xxx{JSON.stringify(props.disabled)}</div>
     )
