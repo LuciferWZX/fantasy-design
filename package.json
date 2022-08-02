@@ -10,7 +10,7 @@
   "scripts": {
     "doc": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" APP_ROOT=dumi dumi dev",
     "doc:build": "cross-env APP_ROOT=dumi dumi build",
-    "learna:publish": "lerna publish --no-push"
+    "learna:publish": "lerna publish"
   },
   "devDependencies": {
     "@types/node": "^18.6.3",
