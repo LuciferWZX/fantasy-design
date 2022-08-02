@@ -1,2 +1,10 @@
 .idea
 /node_modules
+logs
+*.log
+.umi
+dumi/.umi/
+dumi/dist/
+
+dist/
+lib/

@@ -4,7 +4,21 @@
   "workspaces": [
     "packages/*"
   ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "doc": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" APP_ROOT=dumi dumi dev",
+    "doc:build": "cross-env APP_ROOT=dumi dumi build",
+    "learna:publish": "lerna publish"
+  },
   "devDependencies": {
-    "lerna": "^5.3.0"
+    "@types/node": "^18.6.3",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "cross-env": "^7.0.3",
+    "dumi": "^1.1.46",
+    "lerna": "^5.3.0",
+    "typescript": "^4.7.4"
   }
 }
