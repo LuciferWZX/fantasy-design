@@ -1,10 +1,7 @@
 .idea
 /node_modules
-logs
 *.log
-.umi
-dumi/.umi/
-dumi/dist/
-
+packages/**/node_modules
 dist/
 lib/
+dumi/.umi**
