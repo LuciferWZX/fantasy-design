@@ -3,7 +3,9 @@
   "useNx": true,
   "useWorkspaces": true,
   "version": "independent",
-  "publishConfig": {
-    "directory": "lib"
+  "command": {
+    "version": {
+      "allowBranch": ["main","master"]
+    }
   }
 }
