@@ -1,37 +1,28 @@
-# 快速开始
-<div style="text-align: center;">
-    <img alt="logo" src="https://img1.baidu.com/it/u=4157225681,1040328354&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=400" width="300" height="300">
-</div>
-<p >从零打造一套企业级react 组件库生态</p>
+---
+    title: dumi 
+    order: 10
+    hero:
+        title: Fantasy-Design
+        desc: 📖 An excellent React UI framework
+        actions:
+                - text: Get started quickly
+                  link: /guide
+    features:
+        - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
+          title: Out of the box
+          desc: Introduce directly without other complex configurations.
+        - icon: https://gw.alipayobjects.com/zos/bmw-prod/b8570f4d-c1b1-45eb-a1da-abff53159967/kj9t990h_w144_h144.png
+          title: Thematic system
+          desc: There are multiple default themes for you to choose, and custom themes are up to you.
+        - icon: https://gw.alipayobjects.com/zos/bmw-prod/3863e74a-7870-4874-b1e1-00a8cdf47684/kj9t7ww3_w144_h144.png
+          title: Mobile Component Adaptation
+          desc: Install the theme package to quickly enable the research and development capabilities of mobile components, and the built-in mobile high-definition rendering scheme.
+  
+---
 
-## 安装(jsx| pure)
+## Who is using
+    Haha, I don't have it for the time being~
+## Feedback and co-construction
+Please visit [GitHub] (https://github.com/LuciferWZX/fantasy-design) or join the discussion group:
 
-```
-npm install @fantasy-design/components --save
-yarn add @fantasy-design/components
-```
-
-## 使用
-```jsx| pure
-
-const App = () => (
-     <div>
-     aaaa
-     </div>
-);
-```
-
-## 技术
-
-- 框架支持【react】 [https://zh-hans.reactjs.org/](https://zh-hans.reactjs.org/)
-- 组件学习【ant design】 [https://ant.design/index-cn](https://ant.design/index-cn)
-- 本地开发【vite】 [https://cn.vitejs.dev/](https://cn.vitejs.dev/)
-- 项目文档【umi文档】 [https://d.umijs.org/zh-CN](https://d.umijs.org/zh-CN)
-- 持续集成【Travis CI】 [https://travis-ci.org](https://travis-ci.org/)
-- 持续部署【 github Aciton】 [https://docs.github.com/cn/actions](https://docs.github.com/cn/actions)
-
-
-
-## LICENSE
-
-[MIT](https://en.wikipedia.org/wiki/MIT_License)
+    Haha, I don't have it for the time being~
