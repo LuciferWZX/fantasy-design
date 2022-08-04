@@ -11,14 +11,24 @@
   "author": "LuciferWZX <2396423791@qq.com>",
   "homepage": "",
   "license": "ISC",
-  "main": "src/index.ts",
+
   "directories": {
     "lib": "src",
     "test": "__tests__"
   },
   "files": [
-    "src"
+    "dist",
+    "lib"
   ],
+  "main": "./dist/fantasy-design.umd.js",
+  "module": "./dist/fantasy-design.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/fantasy-design.es.js",
+      "require": "./dist/fantasy-design.umd.js"
+    }
+  },
+  "typings": "lib/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -28,7 +38,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "prepublish": "pnpm build"
   },
   "peerDependencies": {
