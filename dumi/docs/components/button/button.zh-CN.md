@@ -13,15 +13,32 @@
  */
 import React,{FC} from "react";
 import {Button} from "@fantasy-design/components";
+import "@fantasy-design/components/button/style/index.less";
+
 
 const App: FC=() => {
     return (
         <div>
             
-            <Button disabled={true}  />
+            <Button type={'primary'}>
+                primary
+            </Button>
+            <Button type={'default'}>
+                default
+            </Button>
+            <Button type={'dashed'}>
+                dashed
+            </Button>
+            <Button type={'link'}>
+                link
+            </Button>
+            <Button type={'text'}>
+                text
+            </Button>
         </div>
         
     )
 }
 export default App
 ```
+<API src="@fantasy-design/components/Button"></API>

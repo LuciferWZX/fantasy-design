@@ -4,7 +4,7 @@ import * as React from "react";
 export type ConfigType = {
     prefixCls?:string|undefined
     getPrefixCls:(suffixCls?: string, customizePrefixCls?: string) => string
-}|undefined
+}
 //获取的前缀
 const defaultGetPrefixCls = (suffixCls?: string, customizePrefixCls?: string) => {
     return suffixCls ? `${customizePrefixCls ?? 'fantasy'}-${suffixCls}` : 'fantasy';

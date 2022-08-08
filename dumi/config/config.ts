@@ -19,6 +19,11 @@ export default defineConfig({
     },
     description:"React UI",
     mode:'site',
+    lessLoader:{
+        modifyVars:{
+            'root-entry-name':'default'
+        },
+    },
     navs: {
         // 多语言 key 值需与 locales 配置中的 key 一致
         'zh-CN': [

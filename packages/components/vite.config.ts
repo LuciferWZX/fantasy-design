@@ -11,6 +11,18 @@ export default defineConfig({
     plugins:[
         reactRefresh()
     ],
+    css: {
+        // css预处理器
+        preprocessorOptions: {
+            less: {
+                charset: false,
+                modifyVars:{
+                    '@root-entry-name':'default'
+                },
+                // additionalData: '@import "./src/style/default.less";',
+            },
+        },
+    },
     build:{
         lib:{
             entry: path.resolve(__dirname, 'src/index.ts'),
