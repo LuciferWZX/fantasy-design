@@ -12,22 +12,27 @@
  *  
  */
 import React,{FC} from "react";
-import {Button} from "@fantasy-design/components";
-import "@fantasy-design/components/button/style/index.less";
+import {Button,ThemeProvider} from "@fantasy-design/components";
 
 
 const App: FC=() => {
     return (
         <div>
-            
-            <Button type={'primary'}>
-                primary
-            </Button>
-            <Button type={'default'}>
-                default
-            </Button>
+            <ThemeProvider theme={'dark'}>
+                <Button type={'primary'} >
+                    primary
+                </Button>
+                <Button type={'default'}>
+                    default
+                </Button>
+            </ThemeProvider>
+            <ThemeProvider >
+                <Button type={'dashed'}>
+                    dashed
+                </Button>
+            </ThemeProvider>
             <Button type={'dashed'}>
-                dashed
+                dashed1
             </Button>
             <Button type={'link'}>
                 link

@@ -16,10 +16,12 @@ export default defineConfig({
         preprocessorOptions: {
             less: {
                 charset: false,
+                javascriptEnabled:true,
                 modifyVars:{
                     '@root-entry-name':'default'
                 },
-                // additionalData: '@import "./src/style/default.less";',
+                hack: `true; @import "./src/style/default.less";`,
+                //additionalData: '@import "./src/style/default.less";',
             },
         },
     },

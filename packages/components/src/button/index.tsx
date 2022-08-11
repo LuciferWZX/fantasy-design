@@ -3,6 +3,8 @@ import {ConfigContext} from "../config-provider/ConfigContext";
 import {tuple} from "../utils/type";
 import {SizeType} from "../config-provider/SizeContext";
 import classNames from "classnames";
+import {StyledButton} from "./style";
+
 const ButtonTypes = tuple('default', 'primary','dashed','link', 'text');
 export type ButtonType =typeof ButtonTypes[number]
 
@@ -35,6 +37,7 @@ export interface ButtonProps{
     block?: boolean
     danger?:boolean
     className?:string
+    onClick?:any
     children?: React.ReactNode;
 }
 
@@ -49,6 +52,7 @@ const Button:FC<ButtonProps> = (props) => {
         type,
         prefixCls:customizePrefixCls,
         className,
+        onClick,
         children
     }=props
     const {getPrefixCls} = useContext(ConfigContext)
@@ -62,10 +66,11 @@ const Button:FC<ButtonProps> = (props) => {
         className
     )
     const buttonNode = (
-        <button
+        <StyledButton
+            onClick={onClick}
             className={classes}>
             {children}
-        </button>
+        </StyledButton>
     )
     if(!isUnBorderedButtonType(type)){
         return buttonNode
