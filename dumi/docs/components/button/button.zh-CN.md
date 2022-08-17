@@ -12,25 +12,21 @@
  *  
  */
 import React,{FC} from "react";
-import {Button,ThemeProvider} from "@fantasy-design/components";
+import {Button} from "@fantasy-design/components";
 
 
 const App: FC=() => {
     return (
         <div>
-            <ThemeProvider theme={'dark'}>
-                <Button type={'primary'} >
-                    primary
-                </Button>
-                <Button type={'default'}>
-                    default
-                </Button>
-            </ThemeProvider>
-            <ThemeProvider >
-                <Button type={'dashed'}>
-                    dashed
-                </Button>
-            </ThemeProvider>
+            <Button type={'primary'} >
+                primary
+            </Button>
+            <Button type={'primary'} disabled>
+                primary disabled 
+            </Button>
+            <Button type={'dashed'}>
+                dashed
+            </Button>
             <Button type={'dashed'}>
                 dashed1
             </Button>

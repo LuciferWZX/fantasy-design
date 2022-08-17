@@ -1,0 +1,11 @@
+@import "../../style/themes/index";
+@import "./mixin";
+@btn-prefix-cls: ~'@{fantasy-prefix}-btn';
+
+.@{btn-prefix-cls}{
+  line-height: @line-height-base;
+  .btn();
+  &-primary{
+    .btn-primary();
+  }
+}

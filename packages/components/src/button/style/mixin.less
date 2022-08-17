@@ -1,0 +1,103 @@
+//----base styles of button----
+.btn(){
+  position: relative;
+  display: inline-block;
+  font-weight: @btn-font-weight;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: @btn-border-width @btn-border-style transparent;
+  box-shadow: @btn-shadow;
+  cursor: pointer;
+  transition: all 0.3s @ease-in-out;
+  user-select: none;
+  touch-action: manipulation;
+
+  &[disabled]{
+    cursor: not-allowed;
+    >*{
+      pointer-events: none;
+      background: red;
+    }
+  }
+}
+.btn-primary(){
+  .button-variant-primary(@btn-primary-color; @btn-primary-bg; @primary-color-hover; @primary-color-active)
+}
+.button-variant-primary(@color;@background;@backgroundHover:yellow;@backgroundActive: yellow){
+  .button-color(@color; @background; @background);
+  text-shadow: @btn-text-shadow;
+  box-shadow: @btn-primary-shadow;
+  &:hover,
+  &:focus {
+    //当主题是dark的时候
+    //& when (@theme = dark) {
+    //  .button-color(
+    //          @color; ~`colorPalette('@{background}', 7) `; ~`colorPalette('@{background}', 7) `
+    //  );
+    //}
+    & when (not (@theme = dark) and not (@theme = variable)) {
+      .button-color(
+              @color; ~`colorPalette('@{background}', 5) `; ~`colorPalette('@{background}', 5) `
+      );
+    }
+    //当主题是variable的时候
+    //& when (@theme = variable) {
+    //  .button-color(@color; @backgroundHover; @backgroundHover);
+    //}
+  }
+  &:active {
+    //& when (@theme = dark) {
+    //  .button-color(
+    //          @color; ~`colorPalette('@{background}', 5) `; ~`colorPalette('@{background}', 5) `
+    //  );
+    //}
+    & when (not (@theme = dark) and not (@theme = variable)) {
+      .button-color(
+              @color; ~`colorPalette('@{background}', 7) `; ~`colorPalette('@{background}', 7) `
+      );
+    }
+    //& when (@theme = variable) {
+    //  .button-color(@color; @backgroundActive; @backgroundActive);
+    //}
+  }
+
+  .button-disabled();
+}
+
+//按钮禁用的样式
+.button-disabled(@color: @btn-disable-color; @background: @btn-disable-bg; @border: @btn-disable-border) {
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      .button-color(@color; @background; @border);
+
+      text-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+//按钮的字体、边框，背景颜色
+.button-color(@color; @background; @border) {
+  color: @color;
+  border-color: @border; // a inside Button which only work in Chrome
+  & when not(@background = null) {
+    background: @background;
+  }
+  // http://stackoverflow.com/a/17253457
+  > a:only-child {
+    color: currentcolor;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: transparent;
+      content: '';
+    }
+  }
+}
