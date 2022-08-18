@@ -20,6 +20,7 @@ export default defineConfig({
     description:"React UI",
     mode:'site',
     lessLoader:{
+        javascriptEnabled:true,
         modifyVars:{
             'root-entry-name':'default'
         },

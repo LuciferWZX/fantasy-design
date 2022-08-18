@@ -12,7 +12,24 @@
   transition: all 0.3s @ease-in-out;
   user-select: none;
   touch-action: manipulation;
+  .button-size(
+          @btn-height-base; @btn-padding-horizontal-base; @font-size-base; @btn-border-radius-base
+  );
 
+  &,
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+
+  &:not([disabled]):hover {
+    text-decoration: none;
+  }
+
+  &:not([disabled]):active {
+    outline: 0;
+    box-shadow: none;
+  }
   &[disabled]{
     cursor: not-allowed;
     >*{
@@ -21,9 +38,27 @@
     }
   }
 }
+//primary的按钮的样式
 .btn-primary(){
   .button-variant-primary(@btn-primary-color; @btn-primary-bg; @primary-color-hover; @primary-color-active)
 }
+// dashed button style
+.btn-dashed() {
+  .button-variant-other(@btn-default-color, @btn-default-bg, @btn-default-border);
+  border-style: dashed;
+}
+//default的按钮的样式
+.btn-default() {
+  .button-variant-other(@btn-default-color; @btn-default-bg; @btn-default-border; );
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    background: @btn-default-bg;
+  }
+}
+//primary按钮的样式
 .button-variant-primary(@color;@background;@backgroundHover:yellow;@backgroundActive: yellow){
   .button-color(@color; @background; @background);
   text-shadow: @btn-text-shadow;
@@ -64,7 +99,45 @@
 
   .button-disabled();
 }
+//其他类型的按钮的样式
+.button-variant-other(@color; @background; @border) {
+  .button-color(@color; @background; @border);
+  &:hover,
+  &:focus {
+    //& when (@theme = dark) {
+    //  .button-color(@primary-5; @background; @primary-5);
+    //}
+    & when (not (@theme = dark) and not (@theme = variable)) {
+      .button-color(
+              ~`colorPalette('@{btn-primary-bg}', 5) `; @background;
+              ~`colorPalette('@{btn-primary-bg}', 5) `
+      );
+    }
+    //& when (@theme = variable) {
+    //  .button-color(@primary-color-hover; @background; @primary-color-hover);
+    //}
+  }
 
+  &:active {
+    //& when (@theme = dark) {
+    //  .button-color(@primary-7; @background; @primary-7);
+    //}
+    & when (not (@theme = dark) and not (@theme = variable)) {
+      .button-color(
+              ~`colorPalette('@{btn-primary-bg}', 7) `; @background;
+              ~`colorPalette('@{btn-primary-bg}', 7) `
+      );
+    }
+    //& when (@theme = variable) {
+    //  .button-color(@primary-color-active; @background; @primary-color-active);
+    //}
+  }
+  .button-disabled();
+}
+// ghost button style
+.btn-ghost() {
+  .button-variant-other(@btn-ghost-color, @btn-ghost-bg, @btn-ghost-border);
+}
 //按钮禁用的样式
 .button-disabled(@color: @btn-disable-color; @background: @btn-disable-bg; @border: @btn-disable-border) {
   &[disabled] {
@@ -99,5 +172,160 @@
       background: transparent;
       content: '';
     }
+  }
+}
+//ghost类型的边框和颜色
+.button-variant-ghost(@color; @border; @borderHover: yellow; @borderActive: yellow) {
+  .button-color(@color; null; @border);
+  text-shadow: none;
+
+  &:hover,
+  &:focus {
+    & when (@border = transparent) {
+      //& when (@theme = dark) {
+      //  .button-color(~`colorPalette('@{color}', 7) `; null; transparent);
+      //}
+      & when (not (@theme = dark) and not (@theme = variable)) {
+        .button-color(~`colorPalette('@{color}', 5) `; null; transparent);
+      }
+      //& when (@theme = variable) {
+      //  .button-color(@borderActive; transparent; transparent);
+      //}
+    }
+    & when not (@border = transparent) {
+      //& when (@theme = dark) {
+      //  .button-color(
+      //          ~`colorPalette('@{color}', 7) `; null; ~`colorPalette('@{color}', 7) `
+      //  );
+      //}
+      & when (not (@theme = dark) and not (@theme = variable)) {
+        .button-color(
+                ~`colorPalette('@{color}', 5) `; null; ~`colorPalette('@{color}', 5) `
+        );
+      }
+      //& when (@theme = variable) {
+      //  .button-color(@borderHover; transparent; @borderHover);
+      //}
+    }
+  }
+
+  &:active {
+    & when (@border = transparent) {
+      //& when (@theme = dark) {
+      //  .button-color(~`colorPalette('@{color}', 5) `; null; transparent);
+      //}
+      & when (not (@theme = dark) and not (@theme = variable)) {
+        .button-color(~`colorPalette('@{color}', 7) `; null; transparent);
+      }
+      //& when (@theme = variable) {
+      //  .button-color(@borderActive; transparent; transparent);
+      //}
+    }
+    & when not (@border = transparent) {
+      //& when (@theme = dark) {
+      //  .button-color(
+      //          ~`colorPalette('@{color}', 5) `; null; ~`colorPalette('@{color}', 5) `
+      //  );
+      //}
+      & when (not (@theme = dark) and not (@theme = variable)) {
+        .button-color(
+                ~`colorPalette('@{color}', 7) `; null; ~`colorPalette('@{color}', 7) `
+        );
+      }
+      //& when (@theme = variable) {
+      //  .button-color(@borderActive; transparent; @borderActive);
+      //}
+    }
+  }
+  .button-disabled();
+}
+
+// danger button style
+.btn-danger() {
+  .button-variant-primary(@btn-danger-color, @btn-danger-bg, @error-color-hover, @error-color-active);
+}
+// 按钮的大小，间距，圆角等等
+.button-size(@height; @padding-horizontal; @font-size; @border-radius) {
+  @padding-vertical: max(
+          (round(((@height - @font-size * @line-height-base) / 2) * 10) / 10) - @border-width-base,
+          0
+  );
+  height: @height;
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  border-radius: @border-radius;
+}
+// danger default button style
+.btn-danger-default() {
+  .button-color(@error-color, @btn-default-bg, @error-color);
+
+  &:hover,
+  &:focus {
+    //& when (@theme = dark) {
+    //  .button-color(
+    //          ~`colorPalette('@{error-color}', 7) `; @btn-default-bg; ~`colorPalette('@{error-color}', 7)
+    //      `
+    //  );
+    //}
+    & when (not (@theme = dark) and not (@theme = variable)) {
+      .button-color(
+              ~`colorPalette('@{error-color}', 5) `; @btn-default-bg; ~`colorPalette('@{error-color}', 5)
+          `
+      );
+    }
+    //& when (@theme = variable) {
+    //  .button-color(@error-color-hover, @btn-default-bg, @error-color-hover);
+    //}
+  }
+
+  &:active {
+    //& when (@theme = dark) {
+    //  .button-color(
+    //          ~`colorPalette('@{error-color}', 5) `; @btn-default-bg; ~`colorPalette('@{error-color}', 5)
+    //      `
+    //  );
+    //}
+    & when (not (@theme = dark) and not (@theme = variable)) {
+      .button-color(
+              ~`colorPalette('@{error-color}', 7) `; @btn-default-bg; ~`colorPalette('@{error-color}', 7)
+          `
+      );
+    }
+    //& when (@theme = variable) {
+    //  .button-color(@error-color-active, @btn-default-bg, @error-color-active);
+    //}
+  }
+  .button-disabled();
+}
+//DEV 按钮波纹
+.button-wave(@wave-width){
+  &:focus{
+    outline: none;
+  }
+  &:after{
+    content: "";
+    display: block;
+    position: absolute;
+    //扩大伪类元素4个方向各10px
+    top: -@wave-width;
+    left: -@wave-width;
+    right: -@wave-width;
+    bottom: -@wave-width;
+    pointer-events: none;
+    background-color: inherit;
+
+    background-repeat: no-repeat;
+    background-position: 50%;
+    opacity: 0;
+    transition: all .3s;
+  }
+  &:active:after {
+    opacity: .3;
+    //设置初始状态
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0s;
   }
 }

@@ -35,6 +35,7 @@ export interface ButtonProps{
     prefixCls?: string
     block?: boolean
     danger?:boolean
+    ghost?:boolean
     className?:string
     onClick?:any
     children?: React.ReactNode;
@@ -51,17 +52,22 @@ const Button:FC<ButtonProps> = (props) => {
         type,
         prefixCls:customizePrefixCls,
         disabled,
+        block,
+        ghost,
+        danger,
         className,
         onClick,
         children
     }=props
     const {getPrefixCls} = useContext(ConfigContext)
     const prefixCls = getPrefixCls('btn',customizePrefixCls)
-    console.log(222,prefixCls)
     const classes = classNames(
         prefixCls,
         {
-            [`${prefixCls}-${type}`]:type
+            [`${prefixCls}-${type}`]:type,
+            [`${prefixCls}-block`]:block,
+            [`${prefixCls}-background-ghost`]:ghost && !isUnBorderedButtonType(type),
+            [`${prefixCls}-dangerous`]:!!danger
         },
         className
     )

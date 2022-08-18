@@ -5,15 +5,27 @@
 @black: #000;
 //----base-------
 @line-height-base:1.5715;
-@border-radius-base: 2px;
+@font-size-base: 14px;
+@border-radius-base: 4px;
 @border-width-base: 1px;
 @border-style-base: solid;
+@text-color: fade(@black, 85%);
 //----color------
+//----->primary
 @primary-color:@blue-6;
 @primary-color-hover: color(~`colorPalette('@{primary-color}', 5) `);
 @primary-color-active: color(~`colorPalette('@{primary-color}', 7) `);
 @primary-color-outline: fade(@primary-color, @outline-fade);
 
+// -----> Error
+@error-color: @red-5;
+@error-color-hover: color(~`colorPalette('@{error-color}', 5) `);
+@error-color-active: color(~`colorPalette('@{error-color}', 7) `);
+@error-color-outline: fade(@error-color, @outline-fade);
+@error-color-deprecated-bg: color(~`colorPalette('@{error-color}', 1) `);
+@error-color-deprecated-border: color(~`colorPalette('@{error-color}', 3) `);
+// ----->height rules
+@height-base: 32px;
 //outline
 @outline-fade: 20%;
 @background-color-base: hsv(0, 0, 96%); // Default grey background color
@@ -23,6 +35,9 @@
 @disabled-bg: @background-color-base;
 @disabled-active-bg: tint(@black, 90%);
 @disabled-color-dark: fade(#fff, 35%);
+
+// Base background color for most components
+@component-background: #fff;
 
 //----Buttons
 @btn-font-weight:400;
@@ -41,8 +56,33 @@
 @btn-primary-color: #fff;
 @btn-primary-bg: @primary-color;
 
+@btn-default-color: @text-color;
+@btn-default-bg: @component-background;
+@btn-default-border: @border-color-base;
+
+@btn-default-ghost-color: @component-background;
+@btn-default-ghost-bg: transparent;
+@btn-default-ghost-border: @component-background;
+
+@btn-danger-color: #fff;
+@btn-danger-bg: @error-color;
+@btn-danger-border: @error-color;
+
+@btn-height-base: @height-base;
+
+@btn-padding-horizontal-base: @padding-md - 1px;
+// vertical paddings
+@padding-lg: 24px; // containers
+@padding-md: 16px; // small containers and buttons
+@padding-sm: 12px; // Form controls and items
+@padding-xs: 8px; // small items
+@padding-xss: 4px; // more small
+
 // Border color
 @border-color-base: hsv(0, 0, 85%); // base border outline a component
+
+//Motion
+@wave-animation-width: 6px;
 
 // Animation
 @ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 1);
