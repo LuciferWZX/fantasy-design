@@ -10,6 +10,12 @@
   &-primary{
     .btn-primary();
   }
+  &-text{
+    .btn-text();
+  }
+  &-link {
+    .btn-link();
+  }
   &-dashed {
     .btn-dashed();
   }
@@ -78,5 +84,18 @@
   }
   &-dangerous&-primary{
     .btn-danger();
+  }
+  &-dangerous&-text {
+    .btn-danger-text();
+  }
+  &-dangerous&-link {
+    .btn-danger-link();
+  }
+}
+a.@{btn-prefix-cls}{
+  padding-top: 0.01px !important;
+  line-height: @btn-height-base - 2px;
+  &-disabled {
+    .btn-href-disabled();
   }
 }

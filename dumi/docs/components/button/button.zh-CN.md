@@ -20,7 +20,7 @@ import {Button} from "@fantasy-design/components";
 const App: FC=() => {
     return (
         <Space direction="vertical">
-            <AButton type={'primary'} ghost>antd 测试按钮</AButton>
+            <AButton disabled type={'link'} href={"www.baidu.com"}>antd 测试按钮</AButton>
             <div>
                 <Button block>
                     block button
@@ -60,12 +60,27 @@ const App: FC=() => {
                 <Button type={'dashed'} danger>
                     dashed danger button
                 </Button>
-                
-                <Button type={'link'}>
-                    link
-                </Button>
+            </Space>
+            <Space>
                 <Button type={'text'}>
                     text
+                </Button>
+                <Button danger type={'text'}>
+                    danger text
+                </Button>
+                <Button type={'text'} disabled>
+                    disabled text
+                </Button>
+            </Space>
+            <Space>
+                <Button type={'link'} href={"www.baidu.com"}>
+                    link
+                </Button>
+                <Button type={'link'} danger >
+                    danger link
+                </Button>
+                <Button type={'link'} disabled href={"www.baidu.com"}>
+                    disabled link
                 </Button>
             </Space>
         </Space>

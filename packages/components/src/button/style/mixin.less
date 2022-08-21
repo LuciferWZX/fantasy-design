@@ -47,6 +47,42 @@
   .button-variant-other(@btn-default-color, @btn-default-bg, @btn-default-border);
   border-style: dashed;
 }
+// text button style
+.btn-text() {
+  .button-variant-other(@text-color, transparent, transparent);
+  box-shadow: none;
+
+  &:hover,
+  &:focus {
+    color: @text-color;
+    background: @btn-text-hover-bg;
+    border-color: transparent;
+  }
+
+  &:active {
+    color: @text-color;
+    background: fadein(@btn-text-hover-bg, 1%);
+    border-color: transparent;
+  }
+
+  .button-disabled(@disabled-color; transparent; transparent);
+}
+// link button style
+.btn-link() {
+  .button-variant-other(@link-color, transparent, transparent);
+  box-shadow: none;
+
+  &:hover {
+    background: @btn-link-hover-bg;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  .button-disabled(@disabled-color; transparent; transparent);
+}
 //default的按钮的样式
 .btn-default() {
   .button-variant-other(@btn-default-color; @btn-default-bg; @btn-default-border; );
@@ -137,6 +173,24 @@
 // ghost button style
 .btn-ghost() {
   .button-variant-other(@btn-ghost-color, @btn-ghost-bg, @btn-ghost-border);
+}
+// link button disabled style
+.btn-href-disabled() {
+  cursor: not-allowed;
+
+  > * {
+    pointer-events: none;
+  }
+
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    .button-color(@btn-disable-color,transparent, transparent);
+
+    text-shadow: none;
+    box-shadow: none;
+  }
 }
 //按钮禁用的样式
 .button-disabled(@color: @btn-disable-color; @background: @btn-disable-bg; @border: @btn-disable-border) {
@@ -243,6 +297,67 @@
 // danger button style
 .btn-danger() {
   .button-variant-primary(@btn-danger-color, @btn-danger-bg, @error-color-hover, @error-color-active);
+}
+.btn-danger-text() {
+  .button-variant-other(@error-color, transparent, transparent);
+  box-shadow: none;
+
+  &:hover,
+  &:focus {
+    //& when (@theme = dark) {
+    //  .button-color(~`colorPalette('@{error-color}', 7) `; @btn-text-hover-bg; transparent);
+    //}
+    & when (not (@theme = dark) and not (@theme = variable)) {
+      .button-color(~`colorPalette('@{error-color}', 5) `; @btn-text-hover-bg; transparent);
+    }
+    //& when (@theme = variable) {
+    //  .button-color(@error-color-hover; @btn-text-hover-bg; transparent);
+    //}
+  }
+
+  &:active {
+    //& when (@theme = dark) {
+    //  .button-color(~`colorPalette('@{error-color}', 5) `; fadein(@btn-text-hover-bg, 1%); transparent);
+    //}
+    & when (not (@theme = dark) and not (@theme = variable)) {
+      .button-color(~`colorPalette('@{error-color}', 7) `; fadein(@btn-text-hover-bg, 1%); transparent);
+    }
+    //& when (@theme = variable) {
+    //  .button-color(@error-color-active; fadein(@btn-text-hover-bg, 1%); transparent);
+    //}
+  }
+  .button-disabled(@disabled-color; transparent; transparent);
+}
+// danger link button style
+.btn-danger-link() {
+  .button-variant-other(@error-color, transparent, transparent);
+  box-shadow: none;
+
+  &:hover,
+  &:focus {
+    //& when (@theme = dark) {
+    //  .button-color(~`colorPalette('@{error-color}', 7) `; transparent; transparent);
+    //}
+    & when (not (@theme = dark) and not (@theme = variable)) {
+      .button-color(~`colorPalette('@{error-color}', 5) `; transparent; transparent);
+    }
+    //& when (@theme = variable) {
+    //  .button-color(@error-color-hover; transparent; transparent);
+    //}
+  }
+
+  &:active {
+    //& when (@theme = dark) {
+    //  .button-color(~`colorPalette('@{error-color}', 5) `; transparent; transparent);
+    //}
+    & when (not (@theme = dark) and not (@theme = variable)) {
+      .button-color(~`colorPalette('@{error-color}', 7) `; transparent; transparent);
+    }
+    //& when (@theme = variable) {
+    //  .button-color(@error-color-active; transparent; transparent);
+    //}
+  }
+  .button-disabled(@disabled-color; transparent; transparent);
 }
 // 按钮的大小，间距，圆角等等
 .button-size(@height; @padding-horizontal; @font-size; @border-radius) {

@@ -2,6 +2,6 @@
 
 const utils = require('..');
 
-describe('@fantasy-design/utils', () => {
+describe('utils', () => {
     it('needs tests');
 });

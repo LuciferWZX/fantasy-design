@@ -1,4 +1,4 @@
-import React, {ButtonHTMLAttributes, FC, useContext} from "react";
+import React, {FC, useContext, useRef} from "react";
 import {ConfigContext} from "../config-provider/ConfigContext";
 import {tuple} from "../utils/type";
 import {SizeType} from "../config-provider/SizeContext";
@@ -33,10 +33,12 @@ export interface ButtonProps{
     icon?:React.ReactNode
     size?:SizeType
     prefixCls?: string
+    style?:React.CSSProperties
     block?: boolean
     danger?:boolean
     ghost?:boolean
     className?:string
+    href?:string
     onClick?:any
     children?: React.ReactNode;
 }
@@ -46,19 +48,24 @@ export interface ButtonProps{
 function isUnBorderedButtonType(type?:ButtonType){
     return type === 'text' || type === "link"
 }
+function isLinkButtonType(type?:ButtonType){
+    return type === 'link'
+}
 
-const Button:FC<ButtonProps> = (props) => {
+const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props,ref) => {
     const {
         type,
         prefixCls:customizePrefixCls,
         disabled,
         block,
+        href,
         ghost,
         danger,
         className,
-        onClick,
+        style,
         children
     }=props
+    const buttonRef =(ref as any)|| React.createRef<HTMLElement>()
     const {getPrefixCls} = useContext(ConfigContext)
     const prefixCls = getPrefixCls('btn',customizePrefixCls)
     const classes = classNames(
@@ -67,23 +74,43 @@ const Button:FC<ButtonProps> = (props) => {
             [`${prefixCls}-${type}`]:type,
             [`${prefixCls}-block`]:block,
             [`${prefixCls}-background-ghost`]:ghost && !isUnBorderedButtonType(type),
-            [`${prefixCls}-dangerous`]:!!danger
+            [`${prefixCls}-dangerous`]:!!danger,
+            [`${prefixCls}-disabled`]:disabled && href!==undefined
         },
         className
     )
+    const handleClick=(e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>)=>{
+        const { onClick } = props;
+        if (disabled) {
+            e.preventDefault();
+            return;
+        }
+        (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
+    }
+    if (isLinkButtonType(type)){
+        return (
+            <a
+                className={classes}
+                style={style}
+                href={href}
+                onClick={handleClick}
+                ref={buttonRef}>
+                {children}
+            </a>
+        )
+    }
     const buttonNode = (
         <button
-            onClick={onClick}
+            onClick={handleClick}
             disabled={disabled}
-            className={classes}>
+            className={classes}
+            style={style}
+            ref={buttonRef}>
             {children}
         </button>
     )
-    if(!isUnBorderedButtonType(type)){
-        return buttonNode
-    }
-    return(
-        <div> 按钮</div>
-    )
+
+    return buttonNode
 }
+const Button = React.forwardRef<unknown, ButtonProps>(InternalButton);
 export default Button

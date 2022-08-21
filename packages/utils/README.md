@@ -1,11 +1,11 @@
-# `@fantasy-design/utils`
+# `utils`
 
 > TODO: description
 
 ## Usage
 
 ```
-const utils = require('@fantasy-design/utils');
+const utils = require('utils');
 
 // TODO: DEMONSTRATE API
 ```
