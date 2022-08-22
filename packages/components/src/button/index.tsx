@@ -8,6 +8,9 @@ import {DisabledContext, SizeContext} from "../config-provider";
 const ButtonTypes = tuple('default', 'primary','dashed','link', 'text');
 export type ButtonType =typeof ButtonTypes[number]
 
+const ButtonShapes = tuple('default', 'circle', 'round');
+export type ButtonShape = typeof ButtonShapes[number];
+
 // const ButtonHTMLTypes = tuple('submit','button','reset')
 // export type ButtonHTMLType = typeof ButtonHTMLTypes[number]
 
@@ -25,13 +28,8 @@ export type ButtonType =typeof ButtonTypes[number]
 
 // export interface BaseButtonProps{
 export interface ButtonProps{
-    /**
-     * @description         button type
-     * @description.zh-CN   按钮类型
-     */
     type?:ButtonType
     disabled?:boolean
-    icon?:React.ReactNode
     size?:SizeType
     prefixCls?: string
     style?:React.CSSProperties
@@ -39,8 +37,9 @@ export interface ButtonProps{
     danger?:boolean
     ghost?:boolean
     className?:string
+    shape?: ButtonShape;
     href?:string
-    onClick?:any
+    onClick?: React.MouseEventHandler<HTMLElement>;
     children?: React.ReactNode;
 }
 
@@ -55,10 +54,11 @@ function isLinkButtonType(type?:ButtonType){
 
 const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props,ref) => {
     const {
-        type,
+        type='default',
+        shape='default',
         prefixCls:customizePrefixCls,
         size,
-        disabled,
+        disabled:customDisabled,
         block,
         href,
         ghost,
@@ -70,25 +70,27 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
     const buttonRef =(ref as any)|| React.createRef<HTMLElement>()
 
     //----------context-------------
-    const {getPrefixCls} = useContext(ConfigContext)
+    const {getPrefixCls,prefixCls:configPrefixCls} = useContext(ConfigContext)
     const customSize = useContext(SizeContext)
-    const customDisabled = useContext(DisabledContext)
-    console.log(111,customSize)
-    console.log(222,customDisabled)
-    //------------------------------
+    const disabled = useContext(DisabledContext)
+    const mergedDisabled = disabled && customDisabled
+    //-----------size-------------------
     const sizeClassNameMap = { large: 'lg', small: 'sm', middle: undefined };
     const sizeFullName =  size||customSize;
     const sizeCls = sizeFullName ? sizeClassNameMap[sizeFullName] || '' : '';
-    console.log(999,sizeCls)
-    const prefixCls = getPrefixCls('btn',customizePrefixCls)
+
+    const prefixCls = getPrefixCls('btn',customizePrefixCls || configPrefixCls)
+    console.log(1111,configPrefixCls)
     const classes = classNames(
         prefixCls,
         {
+            [`${prefixCls}-${shape}`]:shape!=='default' && shape,
             [`${prefixCls}-${type}`]:type,
+            [`${prefixCls}-${sizeCls}`]:sizeCls,
             [`${prefixCls}-block`]:block,
             [`${prefixCls}-background-ghost`]:ghost && !isUnBorderedButtonType(type),
             [`${prefixCls}-dangerous`]:!!danger,
-            [`${prefixCls}-disabled`]:disabled && href!==undefined
+            [`${prefixCls}-disabled`]:mergedDisabled && href!==undefined
         },
         className
     )

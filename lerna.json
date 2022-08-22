@@ -3,6 +3,7 @@
   "useNx": true,
   "useWorkspaces": true,
   "version": "independent",
+  "npmClient": "pnpm",
   "command": {
     "version": {
       "allowBranch": ["main","master"]
