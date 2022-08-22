@@ -17,8 +17,11 @@ import {ConfigProvider,Button} from "@fantasy-design/components";
 const App: FC=() => {
     
     return (
-        <ConfigProvider>
-            <Button/>
+        <ConfigProvider config={{
+            size:'small',
+            disabled:true
+        }}>
+            <Button size={'large'}>config button</Button>
         </ConfigProvider>
     )
 }

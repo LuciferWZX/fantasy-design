@@ -4,6 +4,7 @@ import {tuple} from "../utils/type";
 import {SizeType} from "../config-provider/SizeContext";
 import classNames from "classnames";
 import './style/index.less';
+import {DisabledContext, SizeContext} from "../config-provider";
 const ButtonTypes = tuple('default', 'primary','dashed','link', 'text');
 export type ButtonType =typeof ButtonTypes[number]
 
@@ -56,6 +57,7 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
     const {
         type,
         prefixCls:customizePrefixCls,
+        size,
         disabled,
         block,
         href,
@@ -66,7 +68,18 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
         children
     }=props
     const buttonRef =(ref as any)|| React.createRef<HTMLElement>()
+
+    //----------context-------------
     const {getPrefixCls} = useContext(ConfigContext)
+    const customSize = useContext(SizeContext)
+    const customDisabled = useContext(DisabledContext)
+    console.log(111,customSize)
+    console.log(222,customDisabled)
+    //------------------------------
+    const sizeClassNameMap = { large: 'lg', small: 'sm', middle: undefined };
+    const sizeFullName =  size||customSize;
+    const sizeCls = sizeFullName ? sizeClassNameMap[sizeFullName] || '' : '';
+    console.log(999,sizeCls)
     const prefixCls = getPrefixCls('btn',customizePrefixCls)
     const classes = classNames(
         prefixCls,
