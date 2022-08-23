@@ -54,5 +54,6 @@
     "@types/styled-components": "^5.1.26",
     "less": "^4.1.3",
     "less-loader": "^11.0.0"
-  }
+  },
+  "gitHead": "15c128f58d653c30dfbaf7e48288efe8102b4c38"
 }

@@ -6,6 +6,9 @@
     "fantasy-desgin",
     "icon"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "wuzhixin <zhixin.wu@cyclone-robotics.com>",
   "homepage": "https://github.com/LuciferWZX/fantasy-design#readme",
   "license": "ISC",
@@ -26,5 +29,6 @@
   },
   "bugs": {
     "url": "https://github.com/LuciferWZX/fantasy-design/issues"
-  }
+  },
+  "gitHead": "15c128f58d653c30dfbaf7e48288efe8102b4c38"
 }
