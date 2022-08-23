@@ -1,6 +1,6 @@
 {
   "name": "@fantasy-design/components",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "private": false,
   "description": "this fantasy-design`s components",
   "keywords": [
@@ -23,7 +23,6 @@
   "typings": "src/index.d.ts",
   "sideEffects": [
     "dist/*",
-
     "*.less"
   ],
   "publishConfig": {
