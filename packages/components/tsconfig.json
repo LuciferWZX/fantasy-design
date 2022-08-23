@@ -14,6 +14,7 @@
     "target": "ES6",
     "lib": ["DOM", "ES2017"],
     "skipLibCheck": true,
+    "outDir": "./dist"
   },
   "exclude": ["node_modules"]
 }

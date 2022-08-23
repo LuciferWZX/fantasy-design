@@ -16,21 +16,11 @@
     "test": "__tests__"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
-  "main": "./dist/fantasy-design.umd.js",
-  "module": "./dist/fantasy-design.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/fantasy-design.es.js",
-      "require": "./dist/fantasy-design.umd.js"
-    },
-    "./dist/": {
-      "import": "./dist/*",
-      "require": "./dist/*"
-    }
-  },
-  "types": "./dist/index.d.ts",
+  "main": "src/index.js",
+  "typings": "src/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
