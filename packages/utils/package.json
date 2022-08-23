@@ -10,14 +10,19 @@
     "test": "__tests__"
   },
   "files": [
-    "dist"
+    "dist",
+    "lib"
   ],
   "main": "./dist/fantasy-design-utils.umd.js",
   "module": "./dist/fantasy-design-utils.es.js",
   "exports": {
     ".": {
       "import": "./dist/fantasy-design-utils.es.js",
-      "require": "./distfantasy-design-utils.umd.js"
+      "require": "./dist/fantasy-design-utils.umd.js"
+    },
+    "./lib": {
+      "import": "./lib",
+      "require": "./lib"
     }
   },
   "publishConfig": {
