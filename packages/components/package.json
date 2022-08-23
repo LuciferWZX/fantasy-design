@@ -19,7 +19,7 @@
     "dist",
     "src"
   ],
-  "main": "src/index.tsx",
+  "main": "src/index.js",
   "typings": "src/index.d.ts",
   "sideEffects": [
     "dist/*",
