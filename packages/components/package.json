@@ -23,6 +23,7 @@
   "typings": "src/index.d.ts",
   "sideEffects": [
     "dist/*",
+
     "*.less"
   ],
   "publishConfig": {
