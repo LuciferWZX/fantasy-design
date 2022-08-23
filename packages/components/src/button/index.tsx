@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {FC, useContext} from "react";
 import {ConfigContext} from "../config-provider/ConfigContext";
 import {tuple} from "../utils/type";
 import {SizeType} from "../config-provider/SizeContext";
@@ -127,5 +127,5 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
 
     return buttonNode
 }
-const Button = React.forwardRef<unknown, ButtonProps>(InternalButton);
+const Button:FC<ButtonProps> = React.forwardRef<unknown, ButtonProps>(InternalButton);
 export default Button
