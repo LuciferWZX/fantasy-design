@@ -17,7 +17,7 @@
   },
   "files": [
     "dist",
-    "lib",
+    "src",
     "typings"
   ],
   "main": "./dist/fantasy-design.umd.js",
