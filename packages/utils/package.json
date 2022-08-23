@@ -1,6 +1,6 @@
 {
   "name": "@fantasy-design/utils",
-  "version": "1.0.2",
+  "version": "1.0.3-alpha.0",
   "description": "> TODO: description",
   "author": "LuciferWZX <2396423791@qq.com>",
   "homepage": "https://github.com/LuciferWZX/fantasy-design#readme",
@@ -9,7 +9,9 @@
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/fantasy-design-utils.umd.js",
   "module": "./dist/fantasy-design-utils.es.js",
   "exports": {
