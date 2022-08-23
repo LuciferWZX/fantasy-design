@@ -5,14 +5,19 @@
   "author": "LuciferWZX <2396423791@qq.com>",
   "homepage": "https://github.com/LuciferWZX/fantasy-design#readme",
   "license": "ISC",
-  "main": "lib/index.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
+  "files": ["dist"],
+  "main": "./dist/fantasy-design-utils.umd.js",
+  "module": "./dist/fantasy-design-utils.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/fantasy-design-utils.es.js",
+      "require": "./distfantasy-design-utils.umd.js"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -29,5 +34,8 @@
   },
   "bugs": {
     "url": "https://github.com/LuciferWZX/fantasy-design/issues"
+  },
+  "devDependencies": {
+    "vite": "^3.0.9"
   }
 }
