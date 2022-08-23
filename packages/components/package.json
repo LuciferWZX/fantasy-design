@@ -19,7 +19,7 @@
     "dist",
     "src"
   ],
-  "main": "src/index.js",
+  "main": "src/index.jsx",
   "typings": "src/index.d.ts",
   "sideEffects": [
     "dist/*",
@@ -53,5 +53,5 @@
     "less-loader": "^11.0.0",
     "typescript": "^4.7.4"
   },
-  "gitHead": "1483e88d352bdab3a8e3465e217d8177d852fc34"
+  "gitHead": "ee6cde9129e9b9e941727a18fdd9e8113f8c07ca"
 }
