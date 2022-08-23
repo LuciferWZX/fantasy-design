@@ -10,6 +10,11 @@
 @border-width-base: 1px;
 @border-style-base: solid;
 @text-color: fade(@black, 85%);
+
+@font-size-lg: @font-size-base + 2px;
+@font-size-sm: 12px;
+
+
 //----color------
 //----->primary
 @primary-color:@blue-6;
@@ -26,6 +31,9 @@
 @error-color-deprecated-border: color(~`colorPalette('@{error-color}', 3) `);
 // ----->height rules
 @height-base: 32px;
+@height-lg: 40px;
+@height-sm: 24px;
+
 //outline
 @outline-fade: 20%;
 @background-color-base: hsv(0, 0, 96%); // Default grey background color
@@ -71,7 +79,19 @@
 @btn-danger-bg: @error-color;
 @btn-danger-border: @error-color;
 
+@btn-font-size-lg: @font-size-lg;
+@btn-font-size-sm: @font-size-base;
+@btn-padding-horizontal-base: @padding-md - 1px;
+@btn-padding-horizontal-lg: @btn-padding-horizontal-base;
+@btn-padding-horizontal-sm: @padding-xs - 1px;
+
 @btn-height-base: @height-base;
+@btn-height-lg: @height-lg;
+@btn-height-sm: @height-sm;
+
+@btn-circle-size: @btn-height-base;
+@btn-circle-size-lg: @btn-height-lg;
+@btn-circle-size-sm: @btn-height-sm;
 
 @btn-padding-horizontal-base: @padding-md - 1px;
 // vertical paddings

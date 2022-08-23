@@ -37,6 +37,18 @@
       background: red;
     }
   }
+
+  &-lg {
+    .button-size(
+            @btn-height-lg; @btn-padding-horizontal-lg; @btn-font-size-lg; @btn-border-radius-base
+    );
+  }
+
+  &-sm {
+    .button-size(
+            @btn-height-sm; @btn-padding-horizontal-sm; @btn-font-size-sm; @btn-border-radius-sm
+    );
+  }
 }
 //primary的按钮的样式
 .btn-primary(){
@@ -411,6 +423,37 @@
     //}
   }
   .button-disabled();
+}
+
+// circle button: the content only contains icon
+.btn-circle(@btnClassName: btn) {
+  min-width: @btn-height-base;
+  padding-right: 0;
+  padding-left: 0;
+  text-align: center;
+  border-radius: 50%;
+  &.@{btnClassName}-lg {
+    min-width: @btn-height-lg;
+    border-radius: 50%;
+  }
+  &.@{btnClassName}-sm {
+    min-width: @btn-height-sm;
+    border-radius: 50%;
+  }
+}
+// round button
+.btn-round(@btnClassName: btn) {
+  .button-size(@btn-circle-size; (@btn-circle-size / 2); @font-size-base; @btn-circle-size);
+  &.@{btnClassName}-lg {
+    .button-size(
+            @btn-circle-size-lg; (@btn-circle-size-lg / 2); @btn-font-size-lg; @btn-circle-size-lg
+    );
+  }
+  &.@{btnClassName}-sm {
+    .button-size(
+            @btn-circle-size-sm; (@btn-circle-size-sm / 2); @font-size-base; @btn-circle-size-sm
+    );
+  }
 }
 //DEV 按钮波纹
 .button-wave(@wave-width){

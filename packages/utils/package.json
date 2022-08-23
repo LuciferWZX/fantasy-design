@@ -1,6 +1,6 @@
 {
   "name": "@fantasy-design/utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "> TODO: description",
   "author": "LuciferWZX <2396423791@qq.com>",
   "homepage": "https://github.com/LuciferWZX/fantasy-design#readme",
@@ -29,7 +29,5 @@
   },
   "bugs": {
     "url": "https://github.com/LuciferWZX/fantasy-design/issues"
-  },
-  "dependencies": {
   }
 }
