@@ -10,13 +10,5 @@ export default defineConfig({
             fileName: (format) => `fantasy-design-utils.${format}.js`,
             formats:['es','umd','cjs']
         },
-        rollupOptions:{
-            external:['react','react-dom'],
-            output:{
-                globals:{
-                    react:'React'
-                }
-            }
-        }
     }
 })

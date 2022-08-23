@@ -22,7 +22,8 @@
     "access": "public"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "vite build",
+    "prepublish": "pnpm build"
   },
   "keywords": [
     "fantasy-desgin",

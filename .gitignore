@@ -3,5 +3,4 @@
 *.log
 packages/**/node_modules
 dist/
-lib/
 /dumi/.umi/
