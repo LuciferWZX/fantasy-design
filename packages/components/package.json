@@ -26,8 +26,7 @@
     "*.less"
   ],
   "publishConfig": {
-    "access": "public",
-
+    "access": "public"
   },
   "engines": {
     "node": ">=10",
