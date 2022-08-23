@@ -1,0 +1,30 @@
+{
+  "name": "@fantasy-design/icons",
+  "version": "1.0.0",
+  "description": "fantasy-design icon",
+  "keywords": [
+    "fantasy-desgin",
+    "icon"
+  ],
+  "author": "wuzhixin <zhixin.wu@cyclone-robotics.com>",
+  "homepage": "https://github.com/LuciferWZX/fantasy-design#readme",
+  "license": "ISC",
+  "main": "lib/icons.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuciferWZX/fantasy-design.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/LuciferWZX/fantasy-design/issues"
+  }
+}
