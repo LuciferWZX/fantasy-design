@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "doc": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" APP_ROOT=dumi dumi dev",
+    "win:doc": "cross-env APP_ROOT=dumi dumi dev",
     "doc:build": "cross-env APP_ROOT=dumi dumi build",
     "learna:publish": "lerna publish"
   },
