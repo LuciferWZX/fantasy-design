@@ -103,6 +103,7 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
         (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
     }
     if (isLinkButtonType(type)){
+
         return (
             <a
                 className={classes}
