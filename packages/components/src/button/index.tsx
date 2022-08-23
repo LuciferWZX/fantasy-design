@@ -1,4 +1,4 @@
-import React, {FC, useContext, useRef} from "react";
+import React, {useContext} from "react";
 import {ConfigContext} from "../config-provider/ConfigContext";
 import {tuple} from "../utils/type";
 import {SizeType} from "../config-provider/SizeContext";

@@ -7,6 +7,7 @@ specifiers:
   less: ^4.1.3
   less-loader: ^11.0.0
   styled-components: ^5.3.5
+  typescript: ^4.7.4
   vite: ^3.0.4
 
 dependencies:
@@ -19,6 +20,7 @@ devDependencies:
   '@types/styled-components': 5.1.26
   less: 4.1.3
   less-loader: 11.0.0_less@4.1.3
+  typescript: 4.7.4
 
 packages:
 
@@ -1051,6 +1053,12 @@ packages:
 
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+
+  /typescript/4.7.4:
+    resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
 
   /update-browserslist-db/1.0.5_browserslist@4.21.3:
     resolution: {integrity: sha512-dteFFpCyvuDdr9S/ff1ISkKt/9YZxKjI9WlRR99c180GaztJtRa/fn18FdxGVKVsnPY7/a/FDN68mcvUmP4U7Q==}

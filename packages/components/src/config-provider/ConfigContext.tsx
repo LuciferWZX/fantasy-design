@@ -1,7 +1,5 @@
 import * as React from "react";
 import {SizeContextProvider, SizeType} from "./SizeContext";
-import {useContext} from "react";
-import {SizeContext} from "./index";
 import {DisabledContextProvider, DisabledType} from "./DisabledContext";
 
 //ConfigProvider的config的类型
