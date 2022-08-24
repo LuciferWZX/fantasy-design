@@ -26,7 +26,6 @@ const InternalButton = (props, ref) => {
     const sizeFullName = size || customSize;
     const sizeCls = sizeFullName ? sizeClassNameMap[sizeFullName] || '' : '';
     const prefixCls = getPrefixCls('btn', customizePrefixCls || configPrefixCls);
-    console.log(1111, configPrefixCls);
     const classes = classNames(prefixCls, {
         [`${prefixCls}-${shape}`]: shape !== 'default' && shape,
         [`${prefixCls}-${type}`]: type,

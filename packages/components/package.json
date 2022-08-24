@@ -17,7 +17,6 @@
   },
   "files": [
     "dist",
-    "src"
   ],
   "main": "./dist/fantasy-design.umd.js",
   "module": "./dist/fantasy-design.es.js",
@@ -26,6 +25,10 @@
     ".": {
       "import": "./dist/fantasy-design.es.js",
       "require": "./dist/fantasy-design.umd.js"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
     }
   },
   "sideEffects": [
