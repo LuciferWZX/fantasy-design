@@ -3,7 +3,7 @@ import { SizeType } from "./SizeContext";
 import { DisabledType } from "./DisabledContext";
 export declare type ConfigType = {
     prefixCls?: string | undefined;
-    getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => string;
+    getPrefixCls?: (suffixCls?: string, customizePrefixCls?: string) => string;
     size?: SizeType;
     disabled?: DisabledType;
 };

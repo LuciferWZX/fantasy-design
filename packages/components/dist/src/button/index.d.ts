@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { SizeType } from "../config-provider/SizeContext";
 import './style/index.less';
 declare const ButtonTypes: ["default", "primary", "dashed", "link", "text"];
@@ -20,5 +20,5 @@ export interface ButtonProps {
     onClick?: React.MouseEventHandler<HTMLElement>;
     children?: React.ReactNode;
 }
-declare const Button: FC<ButtonProps>;
+declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<unknown>>;
 export default Button;
