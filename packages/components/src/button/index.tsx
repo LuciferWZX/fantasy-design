@@ -1,4 +1,4 @@
-import React, {FC, useContext} from "react";
+import React, {useContext} from "react";
 import {ConfigContext} from "../config-provider/ConfigContext";
 import {tuple} from "../utils/type";
 import {SizeType} from "../config-provider/SizeContext";
@@ -103,7 +103,6 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
         (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
     }
     if (isLinkButtonType(type)){
-
         return (
             <a
                 className={classes}
@@ -128,5 +127,5 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
 
     return buttonNode
 }
-const Button:FC<ButtonProps> = React.forwardRef<unknown, ButtonProps>(InternalButton);
+const Button = React.forwardRef<unknown, ButtonProps>(InternalButton);
 export default Button
