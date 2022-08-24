@@ -80,7 +80,6 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
     const sizeCls = sizeFullName ? sizeClassNameMap[sizeFullName] || '' : '';
 
     const prefixCls = getPrefixCls('btn',customizePrefixCls || configPrefixCls)
-    console.log(1111,configPrefixCls)
     const classes = classNames(
         prefixCls,
         {
