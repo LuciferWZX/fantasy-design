@@ -16,7 +16,7 @@
     "test": "__tests__"
   },
   "files": [
-    "dist",
+    "dist"
   ],
   "main": "./dist/fantasy-design.umd.js",
   "module": "./dist/fantasy-design.es.js",
