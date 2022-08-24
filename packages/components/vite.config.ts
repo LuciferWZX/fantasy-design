@@ -1,7 +1,9 @@
 import {defineConfig} from "vite";
 import reactRefresh from '@vitejs/plugin-react-refresh';
+import typescript from "@rollup/plugin-typescript";
 
 const path = require('path');
+const resolvePath = (str: string) => path.resolve(__dirname, str);
 export default defineConfig({
     resolve:{
       alias:{
@@ -27,7 +29,7 @@ export default defineConfig({
     },
     build:{
         lib:{
-            entry: path.resolve(__dirname, 'src/index.ts'),
+            entry: resolvePath('src/index.ts'),
             name: 'fantasy-design',
             fileName: (format) => `fantasy-design.${format}.js`,
             formats:['es','umd','cjs']
@@ -36,9 +38,15 @@ export default defineConfig({
             external:['react','react-dom'],
             output:{
                 globals:{
-                    react:'React'
+                    react:'React',
+                    "react-dom": "react-dom",
                 }
-            }
+            },
+            plugins:[
+                typescript({
+                    tsconfig:'./tsconfig.json'
+                })
+            ]
         }
     }
 })
