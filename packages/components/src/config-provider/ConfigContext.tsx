@@ -8,6 +8,7 @@ export type ConfigType = {
     getPrefixCls?:(suffixCls?: string, customizePrefixCls?: string) => string
     size?:SizeType
     disabled?:DisabledType
+
 }
 //获取的前缀
 const defaultGetPrefixCls = (suffixCls?: string, customizePrefixCls?: string) => {
