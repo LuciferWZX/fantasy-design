@@ -1,4 +1,5 @@
 import {defineConfig} from "vite";
+import typescript from "@rollup/plugin-typescript";
 
 const path = require('path');
 export default defineConfig({
@@ -10,5 +11,10 @@ export default defineConfig({
             fileName: (format) => `fantasy-design-utils.${format}.js`,
             formats:['es','umd','cjs']
         },
-    }
+    },
+    plugins:[
+        typescript({
+            tsconfig:'./tsconfig.json'
+        })
+    ]
 })
