@@ -12,13 +12,13 @@
   "author": "wuzhixin <zhixin.wu@cyclone-robotics.com>",
   "homepage": "https://github.com/LuciferWZX/fantasy-design#readme",
   "license": "ISC",
-  "main": "lib/icons.js",
+  "main": "src/icons.js",
   "directories": {
-    "lib": "lib",
+    "lib": "src",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "src"
   ],
   "repository": {
     "type": "git",
