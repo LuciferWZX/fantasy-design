@@ -5,9 +5,10 @@ import {DisabledContextProvider, DisabledType} from "./DisabledContext";
 //ConfigProvider的config的类型
 export type ConfigType = {
     prefixCls?:string|undefined
-    getPrefixCls:(suffixCls?: string, customizePrefixCls?: string) => string
+    getPrefixCls?:(suffixCls?: string, customizePrefixCls?: string) => string
     size?:SizeType
     disabled?:DisabledType
+
 }
 //获取的前缀
 const defaultGetPrefixCls = (suffixCls?: string, customizePrefixCls?: string) => {
