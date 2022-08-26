@@ -8,6 +8,15 @@ export default defineConfig({
     plugins:[
         reactRefresh()
     ],
+    css: {
+        // css预处理器
+        preprocessorOptions: {
+            less: {
+                charset: false,
+                javascriptEnabled:true,
+            },
+        },
+    },
     build:{
         lib:{
             entry: resolvePath('src/index.ts'),

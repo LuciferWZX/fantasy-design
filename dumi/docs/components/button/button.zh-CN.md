@@ -1,4 +1,5 @@
-## Button 按钮 <Badge>开发中</Badge>
+
+# 按钮 <Badge>开发中</Badge>
 
 按钮用于开始一个即时操作。
 
@@ -9,18 +10,26 @@
 ```tsx
 /**
  *  defaultShowCode: true
- *  
+ *
  */
-import React,{FC} from "react";
-import {Space,Button as AButton} from 'antd';
+import React, {FC} from "react";
+import {Space} from 'antd';
 import 'antd/dist/antd.css';
-import {Button} from "@fantasy-design/components";
+import {Button,ConfigProvider} from "@fantasy-design/components";
 
 
-const App: FC=() => {
+const App: FC = () => {
     return (
         <Space direction="vertical">
-            <AButton prefixCls={'test'} type={'primary'} shape={'circle'}>x</AButton>
+            <div>
+                <ConfigProvider config={{
+                    prefixCls:'xxa'
+                }} >
+                    <Button loading={true}>
+                        danger primary
+                    </Button>
+                </ConfigProvider>
+            </div>
             <div>
                 <Button block>
                     block button
@@ -36,12 +45,12 @@ const App: FC=() => {
                 <Button type={"default"} shape={'circle'}>
                     dx
                 </Button>
-                
+
                 <Button type={"primary"} disabled>
                     disabled primary
                 </Button>
             </Space>
-            
+
             <Space>
                 <Button type={"primary"} danger>
                     danger primary
@@ -76,7 +85,7 @@ const App: FC=() => {
                 <Button type={'link'} href={"www.baidu.com"}>
                     link
                 </Button>
-                <Button type={'link'} danger >
+                <Button type={'link'} danger>
                     danger link
                 </Button>
                 <Button type={'link'} disabled href={"www.baidu.com"}>
@@ -84,7 +93,7 @@ const App: FC=() => {
                 </Button>
             </Space>
         </Space>
-        
+
     )
 }
 export default App

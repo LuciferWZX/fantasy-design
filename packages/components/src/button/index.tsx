@@ -3,8 +3,9 @@ import {ConfigContext} from "../config-provider/ConfigContext";
 import {tuple} from "../utils/type";
 import {SizeType} from "../config-provider/SizeContext";
 import classNames from "classnames";
-import './style/index.less';
 import {DisabledContext, SizeContext} from "../config-provider";
+import {LoadingIcon} from "@fantasy-design/icons";
+import './style/index.less';
 const ButtonTypes = tuple('default', 'primary','dashed','link', 'text');
 export type ButtonType =typeof ButtonTypes[number]
 
@@ -36,6 +37,7 @@ export interface ButtonProps{
     block?: boolean
     danger?:boolean
     ghost?:boolean
+    loading?:boolean
     className?:string
     shape?: ButtonShape;
     href?:string
@@ -57,6 +59,7 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
         type='default',
         shape='default',
         prefixCls:customizePrefixCls,
+        loading,
         size,
         disabled:customDisabled,
         block,
@@ -121,10 +124,9 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
             className={classes}
             style={style}
             ref={buttonRef}>
-            {children}
+            {loading && <LoadingIcon/>}{children}
         </button>
     )
-
     return buttonNode
 }
 const Button = React.forwardRef<unknown, ButtonProps>(InternalButton);

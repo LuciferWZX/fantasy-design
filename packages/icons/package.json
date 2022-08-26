@@ -12,7 +12,20 @@
   "author": "wuzhixin <zhixin.wu@cyclone-robotics.com>",
   "homepage": "https://github.com/LuciferWZX/fantasy-design#readme",
   "license": "ISC",
-  "main": "src/icons.js",
+  "main": "./dist/fantasy-design-icon.umd.js",
+  "module": "./dist/fantasy-design-icon.es.js",
+  "typings": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/fantasy-design.es.js",
+      "require": "./dist/fantasy-design.umd.js"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    },
+    "./package": "./package.json"
+  },
   "directories": {
     "lib": "src",
     "test": "__tests__"
@@ -25,7 +38,9 @@
     "url": "git+https://github.com/LuciferWZX/fantasy-design.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "prepublish": "pnpm build"
   },
   "bugs": {
     "url": "https://github.com/LuciferWZX/fantasy-design/issues"

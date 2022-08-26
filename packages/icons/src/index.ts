@@ -1,0 +1,1 @@
+export { default as LoadingIcon } from './icons/Loading-icon'
