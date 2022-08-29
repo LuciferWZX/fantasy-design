@@ -23,7 +23,7 @@ const App: FC = () => {
         <Space direction="vertical">
             <div>
                 <ConfigProvider config={{
-                    prefixCls:'xxa'
+                    //prefixCls:'xxa'
                 }} >
                     <Button loading={true}>
                         danger primary

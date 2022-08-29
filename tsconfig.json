@@ -20,5 +20,6 @@
   },
   "include": [
     "packages/components/src/index.ts",
+    "packages/icons/src/index.ts",
   ]
 }

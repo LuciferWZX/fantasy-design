@@ -11,23 +11,8 @@ export type ButtonType =typeof ButtonTypes[number]
 
 const ButtonShapes = tuple('default', 'circle', 'round');
 export type ButtonShape = typeof ButtonShapes[number];
+type Loading = number | boolean;
 
-// const ButtonHTMLTypes = tuple('submit','button','reset')
-// export type ButtonHTMLType = typeof ButtonHTMLTypes[number]
-
-// export type AnchorButtonProps = {
-//     href: string;
-//     target?: string;
-//     onClick?: React.MouseEventHandler<HTMLElement>;
-// } & BaseButtonProps &
-//     Omit<React.AnchorHTMLAttributes<any>, 'type' | 'onClick'>;
-
-// export type NativeButtonProps = {
-//     htmlType?:ButtonHTMLType
-//     onClick:React.MouseEventHandler<HTMLElement>
-// } & BaseButtonProps & Omit<React.ButtonHTMLAttributes<any>, 'type'|'onClick'>
-
-// export interface BaseButtonProps{
 export interface ButtonProps{
     type?:ButtonType
     disabled?:boolean
@@ -37,7 +22,8 @@ export interface ButtonProps{
     block?: boolean
     danger?:boolean
     ghost?:boolean
-    loading?:boolean
+    icon?: React.ReactNode;
+    loading?: boolean | { delay?: number };
     className?:string
     shape?: ButtonShape;
     href?:string
@@ -64,6 +50,7 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
         disabled:customDisabled,
         block,
         href,
+        icon,
         ghost,
         danger,
         className,
@@ -71,7 +58,8 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
         children
     }=props
     const buttonRef =(ref as any)|| React.createRef<HTMLElement>()
-
+    const [innerLoading, setLoading] = React.useState<Loading>(!!loading);
+    const iconType = innerLoading?'loading':icon
     //----------context-------------
     const {getPrefixCls,prefixCls:configPrefixCls} = useContext(ConfigContext)
     const customSize = useContext(SizeContext)
@@ -81,6 +69,26 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
     const sizeClassNameMap = { large: 'lg', small: 'sm', middle: undefined };
     const sizeFullName =  size||customSize;
     const sizeCls = sizeFullName ? sizeClassNameMap[sizeFullName] || '' : '';
+    //-----------update loading--------
+    const loadingOrDelay:Loading =
+        typeof loading === "object" && loading.delay ? loading.delay || true :!!loading
+    React.useEffect(()=>{
+        let delayTimer:number|null = null
+        if(typeof loadingOrDelay === "number"){
+            delayTimer = window.setTimeout(()=>{
+                delayTimer = null
+                setLoading(loadingOrDelay)
+            },loadingOrDelay)
+        }else{
+            setLoading(loadingOrDelay)
+        }
+        return ()=>{
+            if(delayTimer){
+                window.clearTimeout(delayTimer)
+                delayTimer = null
+            }
+        }
+    },[loadingOrDelay])
 
 
     const prefixCls = getPrefixCls('btn',customizePrefixCls || configPrefixCls)
@@ -90,6 +98,7 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
             [`${prefixCls}-${shape}`]:shape!=='default' && shape,
             [`${prefixCls}-${type}`]:type,
             [`${prefixCls}-${sizeCls}`]:sizeCls,
+            [`${prefixCls}-icon-only`]: !children && children !== 0 && !!iconType,
             [`${prefixCls}-block`]:block,
             [`${prefixCls}-background-ghost`]:ghost && !isUnBorderedButtonType(type),
             [`${prefixCls}-dangerous`]:!!danger,
@@ -97,14 +106,21 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
         },
         className
     )
+
     const handleClick=(e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>)=>{
         const { onClick } = props;
-        if (disabled) {
+        if (innerLoading||disabled) {
             e.preventDefault();
             return;
         }
         (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
     }
+    const iconNode = innerLoading?(
+            <LoadingIcon
+                loading={!!innerLoading}
+            />
+        ):icon?icon:undefined
+
     if (isLinkButtonType(type)){
         return (
             <a
@@ -113,6 +129,7 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
                 href={href}
                 onClick={handleClick}
                 ref={buttonRef}>
+                {iconNode}
                 {children}
             </a>
         )
@@ -124,7 +141,8 @@ const InternalButton:React.ForwardRefRenderFunction<unknown,ButtonProps>= (props
             className={classes}
             style={style}
             ref={buttonRef}>
-            {loading && <LoadingIcon/>}{children}
+            {iconNode}
+            {children}
         </button>
     )
     return buttonNode

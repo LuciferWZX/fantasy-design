@@ -13,18 +13,18 @@ export default defineConfig({
             .exclude.add(/node_modules/)
             .end()
             .use('babel-loader');
-        memo.module
-            .rule('js')
-            .test(/\.(js|mjs|jsx|ts|tsx)$/)
-            .include.add(join(__dirname, '..', '..', 'packages/icons/src'))
-            .end()
-            .exclude.add(/node_modules/)
-            .end()
-            .use('babel-loader');
+        // memo.module
+        //     .rule('js')
+        //     .test(/\.(js|mjs|jsx|ts|tsx)$/)
+        //     .include.add(join(__dirname, '..', '..', 'packages/icons/src'))
+        //     .end()
+        //     .exclude.add(/node_modules/)
+        //     .end()
+        //     .use('babel-loader');
     },
     alias:{
         '@fantasy-design/components':join(__dirname,'..','..','packages/components/src'),
-        '@fantasy-design/icons':join(__dirname,'..','..','packages/icons/src')
+        //'@fantasy-design/icons':join(__dirname,'..','..','packages/icons/src')
     },
     description:"React UI",
     mode:'site',

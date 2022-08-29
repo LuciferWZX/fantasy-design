@@ -6,13 +6,13 @@
 import React,{FC} from "react";
 import {Space} from 'antd';
 import 'antd/dist/antd.css';
-import {LoadingIcon} from "@fantasy-design/icons";
+//import {LoadingIcon} from "@fantasy-design/icons";
 
 
 const App: FC=() => {
     return (
         <Space direction="vertical">
-           <LoadingIcon/>
+           xx
         </Space>
         
     )

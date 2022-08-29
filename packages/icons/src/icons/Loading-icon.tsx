@@ -2,11 +2,20 @@ import React from "react";
 import {FC} from "react";
 import '../source/icon-source'
 import '../styles/index'
-const LoadingIcon:FC=()=>{
-    console.log(111)
+import classNames from "classnames";
+interface IconProps{
+    loading?:boolean
+}
+const LoadingIcon:FC<IconProps>=(props)=>{
+    const {loading}=props
+    const classes=classNames({
+        'icon':true,
+        // [`${prefixCls}-icon`]:true
+    })
+
     return(
-        <svg className="fantasy-icon" aria-hidden="true">
-            <use xlinkHref="#icon-loading0"></use>
+        <svg className={classes} aria-hidden="true">
+            <use xlinkHref="#icon-jiazaizhong"></use>
         </svg>
     )
 }
